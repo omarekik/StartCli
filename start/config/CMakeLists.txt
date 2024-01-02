@@ -15,7 +15,7 @@ set(SOURCES
 
 add_library(${PROJECT_NAME} STATIC ${SOURCES} ${HEADERS})
 
-target_link_libraries(${PROJECT_NAME} INTERFACE
+target_link_libraries(${PROJECT_NAME} PUBLIC
     Boost::boost Boost::program_options
 )
 
