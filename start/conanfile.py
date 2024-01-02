@@ -1,18 +1,15 @@
-from conans import ConanFile
+from conan import ConanFile
 from conan.tools.cmake import CMake, CMakeToolchain, CMakeDeps
-
+ 
 class Start(ConanFile):
     name = "start"
     version = "0.1.0"
     settings = "os", "arch", "compiler", "build_type"
-    generators = "cmake_find_package", "virtualenv"
-
-    def export_sources(self):
-        self.copy("*")                 # -> copies all  from working dir to a "source" dir
-        
+    generators = "VirtualBuildEnv", "VirtualRunEnv"
+    
     def requirements(self):
-        self.requires("boost/1.74.0@")    # -> depend on boost 1.74.0
-        self.requires("gtest/1.11.0@")    # -> depend on gtest
+        self.requires("boost/1.79.0@")    # -> depend on boost 1.79.0
+        self.requires("gtest/1.12.1@")    # -> depend on gtest
 
     def generate(self):
         CMakeToolchain(self).generate()

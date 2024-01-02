@@ -1,4 +1,4 @@
-FROM gcc:9.2
+FROM gcc:11.4
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -10,12 +10,12 @@ RUN apt-get update  && apt-get install -y \
     rm -rf /var/lib/apt/lists/* 
 
 # install CMake
-RUN wget -qO- "https://cmake.org/files/v3.22/cmake-3.22.0-linux-x86_64.tar.gz" \
+RUN wget -qO- "https://cmake.org/files/v3.28/cmake-3.28.0-linux-x86_64.tar.gz" \
     | tar --strip-components=1 -xz -C /usr/local
 
 # Install conan
 RUN python3 -m pip install --upgrade pip setuptools && \
-    python3 -m pip install conan==1.49.0 && \
+    python3 -m pip install conan==2.0.16 && \
     conan --version
 
 COPY . /usr/src/start

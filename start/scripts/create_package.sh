@@ -1,24 +1,29 @@
-#!/bin/bash
+#!/bin/bash -x
+
+# Clean build folder
+rm -rf build
 
 # Build & Run unit tests & create conan package
-conan create . 
+conan profile detect --force
 
 # Install conan package
-mkdir run_linux
-cd run_linux
-conan install start/0.1.0@ -g virtualrunenv 
+conan install . --output-folder=build --build=missing
 
-# Start testing conan package
-source activate_run.sh
+# Generate build system
+cd build
+cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release
+
+# Build
+cmake --build . --config Release
+
+# Run test scripts
+ctest .
 
 # Print help message
-Start -h 
+./main/Start -h 
 
 # Create a start
-Start --create --width 10
+./main/Start --create --width 10
 
-# Remain CLI open to play more with it
-bash
-
-# Exit or finish testing conan package 
-# source deactivate_run.sh
+# Return back from build folder to project folder
+cd ..
