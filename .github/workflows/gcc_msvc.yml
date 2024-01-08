@@ -65,10 +65,10 @@ jobs:
         run: ctest -C ${{ matrix.build_type }}
 
       - name: Sanity check
-        working-directory: ${{github.workspace}}/start/build
+        working-directory: ${{github.workspace}}/start/build/main
         run: |
-          main/${{matrix.app}} -h 
-          main/${{matrix.app}} --create --width 10
+          ${{matrix.app}} -h 
+          ${{matrix.app}} --create --width 10
 
       - uses: actions/upload-artifact@v2
         with:
