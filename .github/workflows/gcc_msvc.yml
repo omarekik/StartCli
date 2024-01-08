@@ -25,7 +25,7 @@ jobs:
           include:
             - os: windows-latest
               compiler: msvc
-              app: \Start.exe
+              app: Release\Start.exe
               artifact: artifact_windows
             - os: ubuntu-latest
               compiler: gcc
