@@ -26,11 +26,11 @@ jobs:
             - os: windows-latest
               compiler: msvc
               app: Start.exe
-              artifact: Start.zip
+              artifact: artifact_windows
             - os: ubuntu-latest
               compiler: gcc
               app: Start
-              artifact: Start.tar.gz
+              artifact: artifact_linux
     steps:
       - uses: actions/checkout@v4
 
