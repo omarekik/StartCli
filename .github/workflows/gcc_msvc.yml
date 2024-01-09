@@ -32,26 +32,27 @@ jobs:
               app: /Start
               artifact: artifact_linux
     steps:
+      - name: Setup - checkout repo
       - uses: actions/checkout@v4
 
       #- uses: lukka/get-cmake@latest
 
-      - name: Install Conan
+      - name: Setup - install Conan
         id: conan
         uses: turtlebrowser/get-conan@main
 
-      - name: tools version
+      - name: Setup - check tools version
         run: |
           echo "${{ steps.conan.outputs.version }}"
           cmake --version
 
-      - name: Install Conan package
+      - name: Restore - install Conan package
         run: |
           conan profile list
           conan profile detect 
           conan install ${{github.workspace}}/start --output-folder=${{github.workspace}}/start/build -s compiler=${{matrix.compiler}} --build=missing
 
-      - name: Generate build system
+      - name: Build - Generate build system
         working-directory: ${{github.workspace}}/start/build
         run: 
           cmake .. -DCMAKE_TOOLCHAIN_FILE="conan_toolchain.cmake" -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
@@ -64,13 +65,14 @@ jobs:
         working-directory: ${{github.workspace}}/start/build
         run: ctest -C ${{ matrix.build_type }}
 
-      - name: Sanity check
+      - name: Test - sanity check
         working-directory: ${{github.workspace}}/start/build
         run: |
           main${{matrix.app}} -h 
           main${{matrix.app}} --create --width 10
 
-      - uses: actions/upload-artifact@v2
+      - name: Publish
+        uses: actions/upload-artifact@v2
         with:
           name: ${{matrix.artifact}}
           path: ${{github.workspace}}/start/build/main/${{matrix.app}}
