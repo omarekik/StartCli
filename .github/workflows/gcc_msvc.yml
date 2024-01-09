@@ -36,22 +36,22 @@ jobs:
 
       #- uses: lukka/get-cmake@latest
 
-      - name: Setup > install Conan
+      - name: Setup - install Conan
         id: conan
         uses: turtlebrowser/get-conan@main
 
-      - name: Setup > check tools version
+      - name: Setup - check tools version
         run: |
           echo "${{ steps.conan.outputs.version }}"
           cmake --version
 
-      - name: Restore > install Conan package
+      - name: Restore - install Conan package
         run: |
           conan profile list
           conan profile detect 
           conan install ${{github.workspace}}/start --output-folder=${{github.workspace}}/start/build -s compiler=${{matrix.compiler}} --build=missing
 
-      - name: Build > Generate build system
+      - name: Build - Generate build system
         working-directory: ${{github.workspace}}/start/build
         run: 
           cmake .. -DCMAKE_TOOLCHAIN_FILE="conan_toolchain.cmake" -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
@@ -60,11 +60,11 @@ jobs:
         working-directory: ${{github.workspace}}/start/build
         run: cmake --build . --config ${{ matrix.build_type }}
       
-      - name: Test > unit test
+      - name: Test - unit test
         working-directory: ${{github.workspace}}/start/build
         run: ctest -C ${{ matrix.build_type }}
 
-      - name: Test > sanity check
+      - name: Test - sanity check
         working-directory: ${{github.workspace}}/start/build
         run: |
           main${{matrix.app}} -h 
