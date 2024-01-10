@@ -32,7 +32,7 @@ jobs:
               app: /Start
               artifact: artifact_linux
             - os: macos-latest
-              compiler: clang
+              compiler: apple-clang
               app: /Start
               artifact: artifact_macos
     steps:
