@@ -1,9 +1,11 @@
 #include <iostream>
 #include <locale>
 #include "StartupConfig.h"
+#include <gsl/gsl>
 
 int main(int argc, char* argv[])
 {
+    Expects(argc > 0); // define pre-conditions
     try 
     {
         if (const auto config = optionsToStartupConfig(argc, argv)) 

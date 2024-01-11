@@ -8,8 +8,9 @@ class Start(ConanFile):
     generators = "VirtualBuildEnv", "VirtualRunEnv"
     
     def requirements(self):
-        self.requires("boost/1.79.0@")    # -> depend on boost 1.79.0
-        self.requires("gtest/1.12.1@")    # -> depend on gtest
+        self.requires("boost/1.79.0@")
+        self.requires("gtest/1.12.1@")
+        self.requires("ms-gsl/4.0.0@")
 
     def generate(self):
         CMakeToolchain(self).generate()
