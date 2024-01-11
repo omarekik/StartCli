@@ -75,7 +75,7 @@ jobs:
           main${{matrix.app}} --create --width 10
 
       - name: Publish
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: ${{matrix.artifact}}
           path: ${{github.workspace}}/start/build/main/${{matrix.app}}
