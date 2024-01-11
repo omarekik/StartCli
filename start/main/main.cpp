@@ -1,7 +1,7 @@
 #include <iostream>
 #include <locale>
-#include "StartupConfig.h"
 #include <gsl/gsl>
+#include "StartupConfig.h"
 
 int main(int argc, char* argv[])
 {
