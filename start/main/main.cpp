@@ -3,7 +3,7 @@
 #include <gsl/gsl>
 #include "StartupConfig.h"
 
-int main(int argc, char* argv[])
+int main(int argc, const char** argv)
 {
     Expects(argc > 0); // define pre-conditions
     try 

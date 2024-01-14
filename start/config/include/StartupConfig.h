@@ -1,6 +1,4 @@
 #pragma once
-
-#include <cstdint>
 #include <optional>
 
 struct StartupConfig {
@@ -8,4 +6,4 @@ struct StartupConfig {
     const int m_Width;
 };
 
-std::optional<const StartupConfig> optionsToStartupConfig(int argc, char* argv[]);
+std::optional<const StartupConfig> optionsToStartupConfig(int argc, const char** argv);

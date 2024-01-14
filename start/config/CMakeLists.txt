@@ -20,3 +20,12 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
+
+set_target_properties (${PROJECT_NAME}
+    PROPERTIES
+        CXX_CLANG_TIDY "${clang_tidy_cmd}"
+)
+
+target_compile_options (${PROJECT_NAME} PRIVATE
+    ${compiler_warnings}
+)

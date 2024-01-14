@@ -2,16 +2,19 @@
 
 #include <gtest/gtest.h>
 #include <string>
+#include <array>
 
-char arg0[] = "Program name";
-char arg1[] = "--create";
-char arg2[] = "--width";
-char arg3[] = "10";
+const std::string arg0 {"Program name"};
+const std::string arg1 {"--create"};
+const std::string arg2 {"--width"};
+const std::string arg3 {"10"};
 
 TEST(StartupConfigTests, validOptions_returnsStartupConfig)
 {
-    char* argv[] = { &arg0[0], &arg1[0], &arg2[0], &arg3[0], NULL };
-    const auto config = optionsToStartupConfig(4, argv);
+    const unsigned int ARGC {5};
+    std::array<const char*, ARGC> argv = { 
+        arg0.c_str(), arg1.c_str(), arg2.c_str(), arg3.c_str(), nullptr };
+    const auto config = optionsToStartupConfig(4, argv.data());
     ASSERT_TRUE(config);
     ASSERT_TRUE(config->m_Create);
     ASSERT_EQ(config->m_Width, 10);
@@ -19,9 +22,10 @@ TEST(StartupConfigTests, validOptions_returnsStartupConfig)
 
 TEST(StartupConfigTests, helpOption_returnsEmptyStartupConfig)
 {
-    char help[] = "--help";
-    char* argv[] = { &arg0[0], &help[0], NULL };
-    const auto config = optionsToStartupConfig(2, argv);
+    const std::string help {"--help"};
+    const unsigned int ARGC {3};
+    std::array<const char*, ARGC> argv = { arg0.c_str(), help.c_str(), nullptr };
+    const auto config = optionsToStartupConfig(2, argv.data());
     ASSERT_FALSE(config);
 }
 
@@ -30,6 +34,8 @@ TEST(StartupConfigTests, notAllOptions_throws)
     //
     // Throw an exeption as no integer value is passed with --width option
     //
-    char* argv[] = { &arg0[0], &arg1[0], &arg2[0], NULL };
-    ASSERT_ANY_THROW(optionsToStartupConfig(3, argv));
+    const unsigned int ARGC {4};
+    std::array<const char*, ARGC> argv = { 
+        arg0.c_str(), arg1.c_str(), arg2.c_str(), nullptr };
+    ASSERT_ANY_THROW(optionsToStartupConfig(3, argv.data()));
 }
