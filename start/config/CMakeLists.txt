@@ -19,7 +19,11 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
     Boost::boost Boost::program_options
 )
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
+#Compilers will not issue warnings from header files originating from SYSTEM
+#Header files will generate warning within the library project
+#Header files will not generate warning when used by other project
+target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/include)
+target_include_directories(${PROJECT_NAME} SYSTEM INTERFACE ${PROJECT_SOURCE_DIR}/include)
 
 set_target_properties (${PROJECT_NAME}
     PROPERTIES
