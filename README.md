@@ -25,4 +25,5 @@ Program options:
 
 ```
 
-
+## Notes:
+ * For every new project, in the CMakeLists.txt, it is possible to specify the target_compile_options by using the variable compiler_warnings initialized in start/scripts/compiler_warnings.cmake  
