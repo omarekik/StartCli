@@ -25,14 +25,17 @@ jobs:
           include:
             - os: windows-latest
               compiler: msvc
+              static_analyzer: clang-tidy.exe
               app: \Release\Start.exe
               artifact: artifact_windows
             - os: ubuntu-latest
               compiler: gcc
+              static_analyzer: clang-tidy
               app: /Start
               artifact: artifact_linux
             - os: macos-latest
               compiler: apple-clang
+              static_analyzer: clang-tidy
               app: /Start
               artifact: artifact_macos
     steps:
@@ -45,16 +48,17 @@ jobs:
         uses: turtlebrowser/get-conan@main
 
         #Clang-tidy is by default missing in macos environment of github actions
-      - name: Setup - install Clang-tidy
-        if: ${{ matrix.os }} == 'macos-latest'
-        run: |
-          brew install llvm
-          ln -s "/usr/local/opt/llvm/bin/clang-tidy" "/usr/local/bin/clang-tidy"
+#      - name: Setup - install Clang-tidy
+#        if: ${{ matrix.os == 'macos-latest' }}  
+#        run: |
+#          brew install llvm
+#          ln -s "/usr/local/opt/llvm/bin/clang-tidy" "/usr/local/bin/clang-tidy"
 
       - name: Setup - check tools version
         run: |
           echo "${{ steps.conan.outputs.version }}"
           cmake --version
+          ${{ matrix.static_analyzer }} --version
 
       - name: Restore - Conan dependency packages
         run: |

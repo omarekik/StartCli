@@ -26,4 +26,4 @@ Program options:
 ```
 
 ## Notes:
- * For every new project, in the CMakeLists.txt, it is possible to specify the target_compile_options by using the variable compiler_warnings initialized in start/scripts/compiler_warnings.cmake  
+ * For every new project, in the CMakeLists.txt, it is possible to specify the target_compile_options by using the variable compiler_warnings initialized in start/scripts/compiler_warnings.cmake and also it is possible to set_target_properties of CXX_CLANG_TIDY to specify clang-tidy as static anlyzer for checking conformity with cppcoreguidelines and in case of warning it will block the build till fixed as configured in start/scripts/static_checking.cmake
