@@ -1,16 +1,15 @@
-#include <iostream>
-#include <locale>
-#include <gsl/gsl>
 #include "StartupConfig.h"
+#include <gsl/gsl>
+#include <iostream>
 
 int main(int argc, const char** argv)
 {
-    Expects(argc > 0); // define pre-conditions
-    try 
+    Expects(argc > 0);  // define pre-conditions
+    try
     {
-        if (const auto config = optionsToStartupConfig(argc, argv)) 
+        if (const auto config = optionsToStartupConfig(argc, argv))
         {
-            if(config->m_Create)
+            if (config->m_Create)
             {
                 std::cout << "The width is " << config->m_Width << "\n";
             }
@@ -20,7 +19,8 @@ int main(int argc, const char** argv)
             }
         }
     }
-    catch(std::exception& e) {
+    catch (std::exception& e)
+    {
         std::cerr << e.what() << "\n";
     }
 }
