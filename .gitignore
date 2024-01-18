@@ -2,7 +2,6 @@ start/build/
 Testing/
 start/Testing/
 CMakeUserPresets.json
-.vscode/
 
 # Prerequisites
 *.d
