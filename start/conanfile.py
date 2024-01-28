@@ -3,7 +3,7 @@ from conan.tools.cmake import CMake, CMakeToolchain, CMakeDeps
  
 class Start(ConanFile):
     name = "start"
-    version = "0.1.0"
+    version = "0.1"
     settings = "os", "arch", "compiler", "build_type"
     generators = "VirtualBuildEnv", "VirtualRunEnv"
     

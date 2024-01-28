@@ -6,7 +6,11 @@
             "type": "lldb",
             "request": "launch",
             "program": "${workspaceFolder}/start/build/main/Start",
-            "args": ["--create", "--width", "20"],
+            "args": [
+                "--create",
+                "--width",
+                "20"
+            ],
             "cwd": "${workspaceFolder}/start",
             "preLaunchTask": "build_debug"
         },
@@ -15,7 +19,11 @@
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceFolder}/start/build/main/Start.exe",
-            "args": ["--create", "--width", "20"],
+            "args": [
+                "--create",
+                "--width",
+                "20"
+            ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/start",
             "preLaunchTask": "build_debug"

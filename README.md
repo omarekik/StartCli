@@ -32,10 +32,12 @@ Program options:
 ## VSCode:
  * In .vscode/tasks.json, a task named "code_format" is created. To format the code following clang format style defined in .clang-format file, type `ctrl+shift+b` and select the format task.
  * In .vscode/tasks.json, two tasks named "build_debug"/"build_release" are created. To launch the build, type `ctrl+shift+b` and select from the build tasks. 
- * Debugging configuration is defined in .vscode/launch.json. For mac/linux environment, vscode extension of CodeLLDB and lldb debugger are required. For windows environment, cppvsdbg is needed. To start debugging type `F5` and to run without debugging type `ctrl+F5`.
+ * Debugging configuration is defined in .vscode/launch.json. For mac/linux environment, vscode extension of CodeLLDB and lldb debugger are required. For windows environment, cppvsdbg is needed. To start debugging type `F5`, and to run without debugging type `ctrl+F5`.  
+ * For debugging CMake scripts, use CMake Tools extension from microsoft as mentioned in these links [\[1](https://devblogs.microsoft.com/cppblog/introducing-cmake-debugger-in-vs-code-debug-your-cmake-scripts-using-open-source-cmake-debugger/), [2](https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/debug.md), [3\]
+](https://devblogs.microsoft.com/cppblog/debug-vcpkg-portfiles-in-cmake-script-mode-with-visual-studio-code/). In ubuntu environment, in case of vscode extension is not detecting the cmake binary installed through Snap, try to install from source the cmake version 3.27.9.  
 
 ## Git pre-commit hook:
-Under .git/hooks add file named pre-commit without extension and put this content in it:  
+As .git folder is versioned, the pre-commit hook can not be cloned from repo and it should be added manually. Under .git/hooks add a file named pre-commit without extension, and put this content in it:  
 ```
 #!/bin/sh
 
