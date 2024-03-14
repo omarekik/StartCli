@@ -37,7 +37,7 @@ Program options:
 ](https://devblogs.microsoft.com/cppblog/debug-vcpkg-portfiles-in-cmake-script-mode-with-visual-studio-code/). In ubuntu environment, in case of vscode extension is not detecting the cmake binary installed through Snap, try to install from source the cmake version 3.27.9.  
 
 ## Git pre-commit hook:
-As .git folder is versioned, the pre-commit hook can not be cloned from repo and it should be added manually. Under .git/hooks add a file named pre-commit without extension, and put this content in it:  
+As .git folder is not versioned, the pre-commit hook can not be cloned from repo and it should be added manually. Under .git/hooks add a file named pre-commit without extension, and put this content in it:  
 ```
 #!/bin/sh
 

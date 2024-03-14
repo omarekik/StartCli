@@ -1,4 +1,4 @@
-name: Multiplatform workflow for linux and windows
+name: Multiplatform workflow for linux, windows and mac
 on:
   push:
     branches: ["master"]
