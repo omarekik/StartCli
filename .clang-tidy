@@ -1,6 +1,5 @@
 ---
 Checks: 'cppcoreguidelines-*'
-CheckOptions:
 WarningsAsErrors: '*'
 HeaderFilterRegex: '.'
 FormatStyle: none
@@ -12,11 +11,11 @@ CheckOptions:
   - key: cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor
     value: true 
   - key: readability-identifier-naming.ClassCase
-    value: 'UpperCamelCase'
+    value: 'CamelCase'
   - key: readability-identifier-naming.StructCase
-    value: 'UpperCamelCase'
+    value: 'CamelCase'
   - key: readability-identifier-naming.EnumCase
-    value: 'UpperCamelCase'
+    value: 'CamelCase'
   - key: readability-identifier-naming.GlobalConstantCase
     value: 'UPPER_CASE'
   - key: readability-identifier-naming.NamespaceCase
@@ -28,17 +27,11 @@ CheckOptions:
   - key: readability-identifier-naming.ParameterCase
     value: 'lower_case'
   - key: readability-identifier-naming.MemberCase
-    value: 'lower_case'
-  - key: readability-identifier-naming.MemberPrefix
-    value: 'm_'
-  - key: readability-identifier-naming.PrivateMemberPrefix
-    value: 'm_'
-  - key: readability-identifier-naming.NonMemberFunctionCase
-    value: 'lower_case'
+    value: 'camelBack'
+  - key: readability-identifier-naming.MethodCase
+    value: 'camelBack'
   - key: readability-identifier-naming.ConstantCase
     value: 'UPPER_CASE'
   - key: readability-identifier-naming.EnumConstantCase
     value: 'UPPER_CASE'
-  - key: readability-identifier-naming.IgnoreFailedSplit
-    value: 'true'
 ...
