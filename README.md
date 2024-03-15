@@ -53,6 +53,9 @@ else
   exit 1
 fi
 ```  
+## Open points:
+ * Add support of ccache
+ * Add support of gcov
 
 ## Known issues:
  * If there is unstaged source/header files, the script start/scripts/format_code.sh will show "Formatting is wrong" even if clang format did not modify any file. Actually, the script should be used after staging all source files and before commiting, so its result gonna be accurate.
