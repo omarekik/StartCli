@@ -14,6 +14,10 @@ or build solution localy by using create_package script or conan commands as men
 ```
 git clone git@github.com:omarekik/StartCli.git && cd StartCli/start
 chmod +x scripts/create_package.sh && ./scripts/create_package.sh
+```   
+If the build system was already generated and cmake files were not modified, it is possible to avoid regenerating it or building unmodified dependency by executing the cmake build command: 
+```
+cd StartCli/start && cmake --build build && ./build/main/Start
 ```
 ## Example of execution:
 Running the CLI with the program option -h will show the help message:
@@ -53,7 +57,7 @@ else
   exit 1
 fi
 ```  
-## Open points:
+## Open item:
  * Add support of ccache
  * Add support of gcov
 

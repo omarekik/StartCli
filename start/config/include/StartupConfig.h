@@ -1,11 +1,10 @@
 #pragma once
 #include <optional>
 
-struct StartupConfig
-{
-    bool m_Create;
-    int m_Width;
+struct StartupConfig {
+  bool create;
+  int width;
 };
 
-std::optional<const StartupConfig> optionsToStartupConfig(int argc,
+std::optional<const StartupConfig> OptionsToStartupConfig(int argc,
                                                           const char** argv);
